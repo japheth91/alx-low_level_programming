@@ -1,37 +1,38 @@
 #include <stdio.h>
 
 /**
- * main - combination of numbers
+ * main - Combination of numbers
  *
- * Return: 0
+ * return: 0
  */
 int main(void)
+
 {
 	int a, b, c;
-	
-	for (a = '0' ; a <= '9' ; a++)
-	{
 
-	for (b = '0' ; a <= '9' ; a++)
+	for (a = '0'; a <= '9'; a++)
 	{
-		for (c = '0' ; c <= '9' ; c++)
+		for (b = '0'; b <= '9'; b++)
 		{
-			if (a < b && b < c)
+			for (c = '0'; c <= '9'; c++)
 			{
-				putchar(a);
-				putchar(b);
-				putchar(c);
-
-				if (a != '7')
+			i	if (a < b && b < c)
 				{
-					putchar(',');
-					putchar(' ');
+					putchar(a);
+					putchar(b);
+					putchar(c);
+
+					if (a != '7')
+					{
+						putchar(',');
+						putchar(' ');
+					}
 				}
 			}
 		}
 	}
-	}
+
 	putchar('\n');
-	return (0)
+	return (0);
 }
 
