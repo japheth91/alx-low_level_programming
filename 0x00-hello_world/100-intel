@@ -1,3 +1,2 @@
-
 #!/bin/bash
 gbcc -S -masm=intel $CFILE
