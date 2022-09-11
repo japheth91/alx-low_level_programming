@@ -16,7 +16,7 @@ int main(void)
 			if (a < b)
 			{
 				putchar(a);
-				putchnar(b);
+				putchar(b);
 
 				if (a != '8' || (a == '8' && b != '9'))
 				{
