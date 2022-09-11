@@ -8,7 +8,7 @@
  * Description: using the main function
  * this program prints "positive, negative and zero"
  * Return: 0
- *  */
+ */
 int main(void)
 {
 	int n;
