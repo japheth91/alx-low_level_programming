@@ -3,10 +3,9 @@
  * main - prints lower case alphagbets
  *
  * Description: using the main function
- * this program prints "Programing Variables"
+ * this program prints "Programing Variables
  * Return: 0
  */
-
 int main(void)
 {
 	char ch;
