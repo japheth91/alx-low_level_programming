@@ -6,6 +6,7 @@
  * this program prints "Programing Variables"
  * Return: 0
  */
+
 int main(void)
 {
 	char ch;
