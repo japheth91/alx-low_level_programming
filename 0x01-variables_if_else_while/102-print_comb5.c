@@ -34,6 +34,6 @@ int main(void)
 		}
 		++n1;
 	}
-	putchar('/n');
+	putchar('\n');
 	return 0;
 }
