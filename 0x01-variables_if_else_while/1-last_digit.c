@@ -2,7 +2,13 @@
 #include <time.h>
 #include <stdio.h>
 
-/* betty style doc for function main goes there */
+/**
+ *  betty style doc for function main goes there
+ *
+ * Description: using the main function
+ * this program prints "positive, negative and zero"
+ * Return: 0
+ *  */
 int main(void)
 {
 	int n;
