@@ -7,7 +7,7 @@
  * Return: 0
  */
 
-int maini(void)
+int main(void)
 {
 	char n;
 
