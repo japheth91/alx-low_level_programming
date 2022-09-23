@@ -1,34 +1,32 @@
 #include "main.h"
 
 /**
- * cap_string - function to capitalize every word in a string.
- * @p: pointer to receive the string.
- * Return: pointer p.
+ * cap_string - capitalizes all words in a string
+ * @s: string to capitalize
+ *
+ * Return: address of s
  */
-char *cap_string(char *p)
+char *cap_string(char *s)
 {
-	int i, j;
-	char a[] = "\t\n,;.!?\"(){}";
+	int i = 0, j;
+	char a[] = " \t\n,;.!?\"(){}";
 
-	for (i = 0; *(p + i) != '\0'; i++)
+	while (*(s + i))
 	{
-		if (*(p + i) >= 'a' || *(p + i) <= 'z')
+	if (*(s + i) >= 'a' && *(s + i) <= 'z')
 		{
-			if (i == 0)
-			{
-				*(p + i) -= 32;
-			}
+		if (i == 0)
+			*(s + i) -= 'a' - 'A';
 			else
 			{
-				for (j = 0; j < 13; j++)
+				for (j = 0; j <= 12; j++)
 				{
-					if (*(p + i - 1) == a[j])
-					{
-						*(p + i) -= 32;
-					}
+					if (a[j] == *(s + i - 1))
+						*(s + i) -= 'a' - 'A';
 				}
 			}
 		}
+	i++;
 	}
-	return (p);
+	return (s);
 }
