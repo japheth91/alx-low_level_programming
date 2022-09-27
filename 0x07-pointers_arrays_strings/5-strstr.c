@@ -1,35 +1,52 @@
 #include "main.h"
-
+#include <stddef.h>
 /**
- * _strstr - finds the first occurrence of the substring needle
- *  in the string haystack
+ * is_equal - A funtion that compares the equality of two string
+ * @str: the first string
+ * @strr: the second string
  *
- * @haystack: string to work on
- * @needle: substring to match
- * Return: pointer to the first match or NULL
+ * Return: return 1 if the two string are equal. else return 0.
+ */
+unsigned int is_equal(char *str, char *strr)
+{
+	int i;
+
+	for (i = 0; *(str + i) != '\0'; ++i)
+	{
+		if (*(str + i) != *(strr + i))
+			return (0);
+	}
+	return (1);
+}
+/**
+ * _strstr - a function that locates a substring.
+ * The function finds the first occurrence of the substring needle
+ * in the string haystack. The terminating null bytes (\0) are not compared
+ * @haystack: the string
+ * @needle: the substring
+ *
+ * Return: Returns a pointer to the beginning of the located substring,
+ * or NULL if the substring is not found.
  */
 char *_strstr(char *haystack, char *needle)
 {
-	int i, j, match;
+	char *nil = NULL;
+	unsigned int i, j;
+	char arr[80] = "";
+	char *ptr;
 
-	if (*needle == '\0')
-		return (haystack);
-	for (i = 0; haystack[i] != '\0'; i++)
+	for (i = 0; *(haystack + i) != '\0'; ++i)
 	{
-		if (haystack[i] == *needle)
+		for (j = 0; *(needle + j) != '\0'; ++j)
 		{
-			for (j = 1; needle[j] != '\0'; j++)
-			{
-				if (needle[j] != haystack[i + j])
-				{
-					match = 0;
-					break;
-				}
-				match = 1;
-			}
-			if (match)
-				return (haystack + i);
+			arr[j] = *(haystack + i + j);
+		}
+		arr[j] = '\0';
+		if (is_equal(arr, needle))
+		{
+			ptr = &haystack[i];
+			return (ptr);
 		}
 	}
-	return (NULL);
+	return (nil);
 }
