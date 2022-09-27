@@ -1,81 +1,30 @@
 #include "main.h"
 
 /**
- * _strspn - a function that gets the length of a prefix substring.
- * @s: the string
- * @accept: the substring
+ * _strspn - gets the length of a prefix substring
  *
- * Return: the number of bytes in the initial segment of s which consist only
- * of bytes from accept
+ * @s: string to work on
+ * @accept: pattern to match against
+ * Return: unsigned int to how many initial bytes match the pattern
  */
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int i;
-	unsigned int cnt = 0;
-	unsigned int sum = 0;
-	char a[80] = "";
+	unsigned int i, j, len = 0, match = 0;
 
-	for (i = 0; *(s + i) != '\0'; ++i)
+	for (i = 0; s[i] != '\0'; i++)
 	{
-		if (is_present(accept, *(s + i)))
+		for (j = 0; accept[j] != '\0'; j++)
 		{
-			a[cnt] = *(s + i);
-			++cnt;
-		}
-		else
-		{
-			if (cnt >= sum)
+			if (s[i] == accept[j])
 			{
-				sum = cnt;
-				a[cnt] = '\0';
-				cnt = 0;
-				if (is_complete(accept, a))
-				{
-					return (sum);
-				}
-			}
-			else
-			{
-				cnt = 0;
+				len++;
+				break;
 			}
 		}
-	}
-	return (sum);
-}
-
-/**
- * is_present - a function that checks if a character is preset in a string
- * @str: the string
- * @a: the character
- *
- * Return: return unsigned int 1 if present, else return 0
- */
-unsigned int is_present(char *str, char a)
-{
-	int i;
-
-	for (i = 0; *(str + i) != '\0'; ++i)
-	{
-		if (a == *(str + i))
-			return (1);
+		if (len != 0)
+			match++;
+		if (match != len)
+			return (len);
 	}
 	return (0);
-}
-
-/**
- * is_complete - a function that checks if all characters in the string st is
- * present in the string str
- * @str: the string
- * @st: the substring
- *
- * Return: 1 if present. 0 otherwise.
- */
-unsigned int is_complete(char *str, char *st)
-{
-	int i;
-
-	for (i = 0; *(st + i) != '\0'; ++i)
-		if (!(is_present(str, *(st + i))))
-			return (0);
-	return (1);
 }
