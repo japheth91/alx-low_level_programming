@@ -1,55 +1,57 @@
 #include "main.h"
-#include <stdio.h>
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * simple_print_buffer - prints buffer in hexa
- * @buffer: the address of memory to print
- * @size: the size of the memory to print
+ * _realloc - a function that reallocates a memory block using malloc and free
+ * The contents will be copied to the newly allocated space, in the range from
+ * the start of ptr up to the minimum of the old and new sizes
+ * If new_size > old_size, the “added” memory should not be initialized
+ * If new_size == old_size do not do anything and return ptr
+ * If ptr is NULL, then the call is equivalent to malloc(new_size), for all
+ * values of old_size and new_size
+ * If new_size is equal to zero, and ptr is not NULL, then the call is
+ * equivalent to free(ptr). Return NULL
+ * Don’t forget to free ptr when it makes sense
+ * @ptr: is a pointer to the memory previously allocated with a call to malloc
+ * @old_size: is the size, in bytes, of the allocated space for ptr
+ * @new_size: is the new size, in bytes of the new memory block
  *
- * Return: Nothing.
+ * Return: pointer to newly allocated memory, or NULL if failure
  */
-void simple_print_buffer(char *buffer, unsigned int size)
+
+void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	unsigned int i;
+	char *ptr1;
+	unsigned int i, max;
+	char *oldptr = ptr;
 
-        i = 0;
-	while (i < size)
-        {
-	        if (i % 10)
-	        {
-			printf(" ");
-		}
-		if (!(i % 10) && i)
-		{
-			printf("\n");
-		}
-		printf("0x%02x", buffer[i]);
-	        i++;
-	}
-	printf("\n");
-}
-
-/**
- * main - check the code for
- *
- * Return: Always 0.
- */
-int main(void)
-{
-	char *p;
-	int i;
-
-	p = malloc(sizeof(char) * 10);
-        p = _realloc(p, sizeof(char) * 10, sizeof(char) * 98);
-	i = 0;
-        while (i < 98)
+	max = new_size;
+	if (ptr == NULL)
 	{
-	        p[i++] = 98;
+		ptr1 = malloc(new_size);
+		return (ptr1);
 	}
-	simple_print_buffer(p, 98);
-	free(p);
 
-	return (0);
+	if (new_size == 0)
+	{
+		free(ptr);
+		return (NULL);
+	}
+
+	if (new_size == old_size)
+		return (ptr);
+
+	ptr1 = malloc(new_size);
+
+	if (ptr1 == NULL)
+		return (NULL);
+
+	if (old_size < new_size)
+		max = old_size;
+
+	for (i = 0; i < max; i++)
+		*(ptr1 + i) = *(oldptr + i);
+
+	free(ptr);
+	return (ptr1);
 }
