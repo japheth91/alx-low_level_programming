@@ -1,26 +1,25 @@
 #include <stdio.h>
 /**
- * main - main function
- * Return: 0
+ * main - Entry point
+ *
+ * Return: Always 0 (Success/correct)
  */
 int main(void)
 {
-	int i;
-	int j;
-	int k;
+	int i, j, k;
 
-	for (i = 0 ; i < 10 ; i++)
+	for (i = 48; i < 58; i++)
 	{
-		for (j = 1 ; j < 10 ; j++)
+		for (j = 49; j < 58; j++)
 		{
-			for (k = 2 ; j < 10 ; k++)
+			for (k = 50; k < 58; k++)
 			{
-				if (i < j && j < k)
+				if (k > j && j > i)
 				{
-					putchar(i + '0');
-					putchar(j + '0');
-					putchar(k + '0');
-					if (i + j + k != 24)
+					putchar(i);
+					putchar(j);
+					putchar(k);
+					if (i != 55 || j != 56)
 					{
 						putchar(',');
 						putchar(' ');
