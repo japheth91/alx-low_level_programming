@@ -1,4 +1,10 @@
 #include "main.h"
+/**
+ * print_times_table - n times table
+ * @n: the number defines the table
+ *
+ * Return: no value
+ */
 
 void print_times_table(int n)
 {
