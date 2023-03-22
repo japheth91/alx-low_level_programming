@@ -17,7 +17,6 @@ void print_times_table(int n)
 			_putchar('0');
 			for (j = 1 ; j <= n ; j++)
 			{
-				_putchar(' ');
 				_putchar(',');
 
 			z = i * j;
@@ -27,6 +26,7 @@ void print_times_table(int n)
 				_putchar(' ');
 			if (z >= 100)
 			{
+				_putchar(' ');
 				_putchar((z / 100) + '0');
 				_putchar(((z / 10) % 10) + '0');
 			}
