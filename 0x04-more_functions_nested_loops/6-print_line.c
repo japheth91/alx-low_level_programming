@@ -1,6 +1,8 @@
 #include "main.h"
 /**
- *
+ * print_line - prints '_' chnaracter n times
+ * @n: function parameter
+ * Return: 0
  */
 void print_line(int n)
 {
@@ -13,7 +15,7 @@ void print_line(int n)
 			_putchar('\n');
 		}
 		i++;
-		_putchar(95);
+		_putchar('_');
 	}
 	_putchar('\n');
 }
