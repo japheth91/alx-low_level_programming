@@ -1,21 +1,22 @@
 #include "main.h"
+
 /**
- * print_rev - prints string in reverse order
- * @s: string to be reverse
+ * print_rev - function to print elements of an array in reverse order.
+ *
+ * @s: array for which its characters are printed in reverse order.
  */
 void print_rev(char *s)
 {
-	int i;
-	int c = 0;
+	int count = 0;
 
-	for (i = 0 ; s[i] != '\0' ; i++)
+	while (s[count] != '\0')
+		count++;
+
+	while (count)
 	{
-		c++;
+		_putchar(s[count - 1]);
+		count--;
 	}
-	for (i = c ; i >= 0 ; i--)
-	{
-		_putchar(s[i]);
-	}
+
 	_putchar('\n');
-
 }
