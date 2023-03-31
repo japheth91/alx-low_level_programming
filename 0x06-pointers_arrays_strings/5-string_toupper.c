@@ -1,11 +1,13 @@
 #include "main.h"
 /**
- *
+ * *string_toupper - changes lowercase to uppercase
+ * @n: contains element in array
+ * Return: uppercase
  */
 char *string_toupper(char *n)
 {
 	int i;
-	
+
 	for (i = 0 ; n[i] != '\0' ; i++)
 	{
 		if (n[i] >= 'a' && n[i] <= 'z')
