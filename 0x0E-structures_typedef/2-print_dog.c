@@ -4,12 +4,14 @@
 /**
  * print_dog - prints the value of struct dog
  * @d: pointer to the struct
+ *
  * Return: void
  */
 void print_dog(struct dog *d)
 {
 	if (d == NULL)
 		return;
+
 	if (d->name == NULL)
 		d->name = "nil";
 	if (d->owner == NULL)
