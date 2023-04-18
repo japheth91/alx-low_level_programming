@@ -10,28 +10,37 @@
  */
 dog_t *new_dog(char *name, float age, char *owner)
 {
-	struct dog *newDog;
-	int i;
-	int lenName = 0;
-	int lenOwner = 0;
+	dog_t *newDog;
+	unsigned int i, lenName = 0, lenOwner = 0;
 
-	for (i = 0; lenName != '\0'; i++)
-		lenName++;
-	for (i = 0; lenOwner != '\0'; i++)
-		lenOwner++;
-	newDog = malloc(sizeof(struct dog));
+	if (name == NULL || owner == NULL)
+		return (NULL);
+	newDog = malloc(sizeof(dog_t));
 	if (newDog == NULL)
 		return (NULL);
-	newDog->name = malloc(sizeof(char) * lenName + 1);
+	for (lenName = 0; name[lenName]; lenName++)
+		;
+	lenName++;
+	newDog->name = malloc(lenName * sizeof(char));
 	if (newDog->name == NULL)
+	{
+		free(newDog);
 		return (NULL);
-	newDog->owner = malloc(sizeof(char) * lenOwner + 1);
-	if (newDog->owner == NULL)
-		return (NULL);
-	for (i = 0; name[i] != '\0'; i++)
+	}
+	for (i = 0; i < lenName; i++)
 		newDog->name[i] = name[i];
-	for (i = 0; owner[i] != '\0'; i++)
-		newDog->owner[i] = owner[i];
 	newDog->age = age;
+	for (lenOwner =0; owner[lenOwner]; lenOwner++)
+		;
+	lenOwner++;
+	newDog->owner = malloc(lenOwner * sizeof(char));
+	if (newDog->owner == NULL)
+	{
+		free(newDog->name);
+		free(newDog);
+		return (NULL);
+	}
+	for (i = 0; i < lenOwner; i++)
+		newDog->owner[i] = owner[i];
 	return (newDog);
 }
