@@ -5,6 +5,7 @@
  * main - main function
  * @argc: argument count
  * @argv: array of argument
+ * Return: 0 always (success)
  */
 int main(int argc __attribute__((unused)), char *argv[])
 {
